@@ -38,17 +38,6 @@ public class Ship {
         }
     }
 
-    /*public void SetUnlockAroundPlace(String[][] array)
-    {
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i][j].equals(VariableContainer.PLACE)) {
-
-                }
-            }
-        }
-    }*/
-
     public void SetUnlockAroundFirstPlace(String[][] array) {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {

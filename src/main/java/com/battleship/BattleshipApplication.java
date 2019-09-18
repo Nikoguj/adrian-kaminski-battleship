@@ -36,8 +36,7 @@ public class BattleshipApplication extends Application {
 
         Ship ship = new Ship();
         Bridge bridge = new Bridge();
-        gui.SpawnButtonInChoose(1, ship, VariableContainer.array, bridge);
-
+        gui.SpawnButtonInChoose(ship, VariableContainer.array, bridge);
 
         GridPane player1Board = new GridPane();
         GridPane player2Board = new GridPane();
@@ -49,8 +48,6 @@ public class BattleshipApplication extends Application {
         gui.SpawnIndexInGrid(player2Board);
 
         gui.SpawnButtonInBoard(1, ship, VariableContainer.array, bridge, player1Board);
-
-
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setGridLinesVisible(true);

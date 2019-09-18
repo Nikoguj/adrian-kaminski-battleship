@@ -112,58 +112,57 @@ public class GUI {
         }
     }
 
-    public void SpawnButtonInChoose(int player, Ship ship, String[][] array, Bridge bridge) {
+    public void SpawnButtonInChoose(Ship ship, String[][] array, Bridge bridge) {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4 - i; j++) {
                 Button button = new Button();
                 button.setStyle(VariableContainer.PLACECOLOUR);
-                if (player == 1) {
-                    if (i == 0) {
-                        button.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                if(VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
-                                    bridge.PlayerChooseShip(4, ship, array);
-                                    SetColourButton();
-                                }
+                if (i == 0) {
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
+                                bridge.PlayerChooseShip(4, ship, array);
+                                SetColourButton();
                             }
-                        });
-                    } else if (i == 1) {
-                        button.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                if(VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
-                                    bridge.PlayerChooseShip(3, ship, array);
-                                    SetColourButton();
-                                }
+                        }
+                    });
+                } else if (i == 1) {
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
+                                bridge.PlayerChooseShip(3, ship, array);
+                                SetColourButton();
                             }
-                        });
-                    } else if (i == 2) {
-                        button.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                if(VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
-                                    bridge.PlayerChooseShip(2, ship, array);
-                                    SetColourButton();
-                                }
+                        }
+                    });
+                } else if (i == 2) {
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
+                                bridge.PlayerChooseShip(2, ship, array);
+                                SetColourButton();
                             }
-                        });
-                    } else if (i == 3) {
-                        button.setOnAction(new EventHandler<ActionEvent>() {
-                            @Override
-                            public void handle(ActionEvent event) {
-                                if(VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
-                                    bridge.PlayerChooseShip(1, ship, array);
-                                    SetColourButton();
-                                }
+                        }
+                    });
+                } else if (i == 3) {
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0) {
+                                bridge.PlayerChooseShip(1, ship, array);
+                                SetColourButton();
                             }
-                        });
-                    }
+                        }
+                    });
                 }
 
                 button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 GridPane.setConstraints(button, j, 0);
                 arrayListGridPane.get(i).getChildren().addAll(button);
+
             }
         }
     }
@@ -180,7 +179,7 @@ public class GUI {
                     button.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event) {
-                            bridge.PlayerClickButtonInBoard(ship, array, finalJ, finalI, finalI, finalJ);
+                            bridge.PlayerClickButtonInBoard(ship, array, finalJ, finalI);
                             SetColourButton();
                         }
                     });
@@ -195,18 +194,17 @@ public class GUI {
     public void SetColourButton() {
         for (int i = 0; i < VariableContainer.arrayButton.length; i++) {
             for (int j = 0; j < VariableContainer.arrayButton.length; j++) {
-                if(VariableContainer.array[i][j].equals(VariableContainer.EMPTY))
-                {
+                if (VariableContainer.array[i][j].equals(VariableContainer.EMPTY)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.EMPTYCOLOUR);
-                }else if (VariableContainer.array[i][j].equals(VariableContainer.UNLOCK)) {
+                } else if (VariableContainer.array[i][j].equals(VariableContainer.UNLOCK)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.UNLOCKCOLOUR);
-                }else if (VariableContainer.array[i][j].equals(VariableContainer.LOCK)) {
+                } else if (VariableContainer.array[i][j].equals(VariableContainer.LOCK)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.LOCKCOLOUR);
-                }else if (VariableContainer.array[i][j].equals(VariableContainer.HIT)) {
+                } else if (VariableContainer.array[i][j].equals(VariableContainer.HIT)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.HITCOLOUR);
-                }else if (VariableContainer.array[i][j].equals(VariableContainer.HITSINK)) {
+                } else if (VariableContainer.array[i][j].equals(VariableContainer.HITSINK)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.HITSINKCOLOUR);
-                }else if (VariableContainer.array[i][j].equals(VariableContainer.PLACE)) {
+                } else if (VariableContainer.array[i][j].equals(VariableContainer.PLACE)) {
                     VariableContainer.arrayButton[i][j].setStyle(VariableContainer.PLACECOLOUR);
                 }
             }

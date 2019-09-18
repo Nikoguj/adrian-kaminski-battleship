@@ -167,25 +167,6 @@ public class BattleshipApplicationTests {
     }
 
     @Test
-    public void testFindLastPutPlace()
-    {
-        Ship ship = new Ship();
-        String[][] startArray = new String[][]{
-                {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
-                {VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
-                {VariableContainer.UNLOCK, VariableContainer.PLACE, VariableContainer.PLACE, VariableContainer.PLACE, VariableContainer.EMPTY},
-                {VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
-                {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
-        };
-
-        Vec2d exceptedVec2d = new Vec2d(2,3);
-        Vec2d returnVec2d = ship.FindLastPutPlace(startArray);
-
-
-        Assert.assertEquals(exceptedVec2d, returnVec2d);
-    }
-
-    @Test
     public void testHorizontally()
     {
         Ship ship = new Ship();

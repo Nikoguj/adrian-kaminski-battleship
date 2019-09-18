@@ -12,13 +12,13 @@ public class Bridge {
         VariableContainer.HOW_MANY_LEFT_TO_PLACE = howManyMasted;
     }
 
-    public boolean PlayerClickButtonInBoard(Ship ship, String[][] array, int column, int row, int finalI, int finalJ) {
+    public boolean PlayerClickButtonInBoard(Ship ship, String[][] array, int column, int row) {
         System.out.println(VariableContainer.HOW_MANY_LEFT_TO_PLACE);
         if (VariableContainer.HOW_MANY_LEFT_TO_PLACE > 0) {
             if (VariableContainer.FIRST_PLACED) {
                 if (array[row][column].equals(VariableContainer.UNLOCK)) {
-                    VariableContainer.LASTPLACE.x = finalI;
-                    VariableContainer.LASTPLACE.y = finalJ;
+                    VariableContainer.LASTPLACE.x = row;
+                    VariableContainer.LASTPLACE.y = column;
                     ship.SetStatus(array, VariableContainer.PLACE, column, row);
                     ship.SetUnlockPlace(array);
                     VariableContainer.HOW_MANY_LEFT_TO_PLACE = VariableContainer.HOW_MANY_LEFT_TO_PLACE - 1;
@@ -30,8 +30,8 @@ public class Bridge {
                 }
             } else {
                 if (array[row][column].equals(VariableContainer.EMPTY) || array[row][column].equals(VariableContainer.UNLOCK)) {
-                    VariableContainer.LASTPLACE.x = finalI;
-                    VariableContainer.LASTPLACE.y = finalJ;
+                    VariableContainer.LASTPLACE.x = row;
+                    VariableContainer.LASTPLACE.y = column;
                     ship.SetStatus(array, VariableContainer.PLACE, column, row);
                     ship.SetUnlockAroundFirstPlace(array);
                     VariableContainer.HOW_MANY_LEFT_TO_PLACE = VariableContainer.HOW_MANY_LEFT_TO_PLACE - 1;
