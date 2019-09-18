@@ -32,11 +32,17 @@ public class BattleshipApplication extends Application {
         gui.MakeGridShipChoose(player2ShipsChoose);
 
         Array array = new Array();
-        array.SetArrayEmpty();
+        array.SetArrayEmpty(VariableContainer.array);
 
         Ship ship = new Ship();
         Bridge bridge = new Bridge();
-        gui.SpawnButtonInChoose(ship, VariableContainer.array, bridge);
+        Computer computer = new Computer();
+
+        gui.SpawnButtonInChoosePlayer(ship, VariableContainer.array, bridge);
+        gui.SpawnButtonInChooseComputer();
+
+        gui.FillLabelOnStart(player1ShipsChoose, true);
+        gui.FillLabelOnStart(player2ShipsChoose, false);
 
         GridPane player1Board = new GridPane();
         GridPane player2Board = new GridPane();
@@ -47,7 +53,9 @@ public class BattleshipApplication extends Application {
         gui.SpawnIndexInGrid(player1Board);
         gui.SpawnIndexInGrid(player2Board);
 
-        gui.SpawnButtonInBoard(1, ship, VariableContainer.array, bridge, player1Board);
+        computer.FillComputerArray();
+        gui.SpawnButtonInPayerBoard(1, ship, VariableContainer.array, bridge, player1Board);
+        gui.SpawnButtonInComputerBoard(player2Board);
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setGridLinesVisible(true);

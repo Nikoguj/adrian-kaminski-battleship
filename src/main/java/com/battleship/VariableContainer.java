@@ -11,6 +11,7 @@ public class VariableContainer {
     public static String HITSINK = "HITSINK";
     public static String LOCK = "LOCK";
     public static String UNLOCK = "UNLOCK";
+    public static String MISS = "MISS";
 
     public static String EMPTYCOLOUR = "-fx-background-color: #4acfff";
     public static String PLACECOLOUR = "-fx-background-color: #4d381f";
@@ -18,6 +19,7 @@ public class VariableContainer {
     public static String HITSINKCOLOUR = "-fx-background-color: #000000";
     public static String UNLOCKCOLOUR = "-fx-background-color: #8cff00";
     public static String LOCKCOLOUR = "-fx-background-color: #828282";
+    public static String MISSCOLOUR = "-fx-background-color: #ffdd00";
 
     public static Vec2d LASTPLACE = new Vec2d(5, 5);
 
@@ -53,5 +55,8 @@ public class VariableContainer {
 
     public static String[][] array = new String[10][10];
     public static Button[][] arrayButton = new Button[10][10];
+
+    public static String[][] arrayPC = new String[10][10];
+    public static Button[][] arrayButtonPC = new Button[10][10];
 
 }
