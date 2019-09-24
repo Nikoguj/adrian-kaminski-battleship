@@ -1,5 +1,7 @@
 package com.battleship;
 
+import java.util.Random;
+
 public class Computer {
     public void FillComputerArray() {
         for (int i = 0; i < VariableContainer.arrayPC.length; i++) {
@@ -27,5 +29,21 @@ public class Computer {
         VariableContainer.arrayPC[9][2] = VariableContainer.PLACE;
         VariableContainer.arrayPC[9][6] = VariableContainer.PLACE;
         VariableContainer.arrayPC[9][7] = VariableContainer.PLACE;
+    }
+
+    public void RandomShot(Logic ship, String[][] array) {
+        Random random = new Random();
+        int row = random.nextInt(array.length);
+        int column = random.nextInt(array.length);
+        while(array[row][column].equals(VariableContainer.MISS) || array[row][column].equals(VariableContainer.HITSINK) || array[row][column].equals(VariableContainer.HIT))
+        {
+            row = random.nextInt(array.length);
+            column = random.nextInt(array.length);
+        }
+        if (array[row][column].equals(VariableContainer.PLACE)) {
+            ship.SetStatus(array, VariableContainer.HIT, column, row);
+        }else{
+            ship.SetStatus(array, VariableContainer.MISS, column, row);
+        }
     }
 }

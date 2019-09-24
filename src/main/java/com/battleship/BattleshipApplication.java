@@ -8,8 +8,7 @@ import javafx.stage.Stage;
 
 public class BattleshipApplication extends Application {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 
@@ -34,11 +33,11 @@ public class BattleshipApplication extends Application {
         Array array = new Array();
         array.SetArrayEmpty(VariableContainer.array);
 
-        Ship ship = new Ship();
+        Logic logic = new Logic();
         Bridge bridge = new Bridge();
         Computer computer = new Computer();
 
-        gui.SpawnButtonInChoosePlayer(ship, VariableContainer.array, bridge);
+        gui.SpawnButtonInChoosePlayer(logic, VariableContainer.array, bridge, gridPane);
         gui.SpawnButtonInChooseComputer();
 
         gui.FillLabelOnStart(player1ShipsChoose, true);
@@ -53,16 +52,26 @@ public class BattleshipApplication extends Application {
         gui.SpawnIndexInGrid(player1Board);
         gui.SpawnIndexInGrid(player2Board);
 
+        gui.SpawnLabelHowManyLeftToPlace(gridPane);
+
+        Player player1 = new Player(VariableContainer.PAYER_NAME, false);
+        Player player2 = new Player("Computer", false);
+
+
         computer.FillComputerArray();
-        gui.SpawnButtonInPayerBoard(1, ship, VariableContainer.array, bridge, player1Board);
-        gui.SpawnButtonInComputerBoard(player2Board);
+        gui.SpawnButtonInPayerBoard(logic, VariableContainer.array, bridge, player1Board, player1, gridPane);
+        gui.SpawnButtonInComputerBoard(player2Board, bridge, logic, player1, computer);
 
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setGridLinesVisible(true);
         gridPane.getChildren().addAll();
-        Scene scene = new Scene(gridPane, 960, 540);
+        Scene scene = new Scene(gridPane, 960, 560);
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);
         primaryStage.show();
+
+
+        //Welcome window
+        WelcomeWindow welcomeWindow = new WelcomeWindow(gridPane, gui, player1, player2);
     }
 }

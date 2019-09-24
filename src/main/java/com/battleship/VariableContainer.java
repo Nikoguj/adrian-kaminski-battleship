@@ -49,7 +49,6 @@ public class VariableContainer {
     public static int TWO_MASTED = 2;
     public static int ONE_MASTED = 1;
 
-
     public static int HOW_MANY_LEFT_TO_PLACE = 0;
     public static boolean FIRST_PLACED = false;
 
@@ -59,4 +58,5 @@ public class VariableContainer {
     public static String[][] arrayPC = new String[10][10];
     public static Button[][] arrayButtonPC = new Button[10][10];
 
+    public static String PAYER_NAME;
 }

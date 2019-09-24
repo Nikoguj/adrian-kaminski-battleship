@@ -1,16 +1,14 @@
 package com.battleship;
 
-import com.sun.javafx.geom.Vec2d;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 
 public class BattleshipApplicationTests {
 
     @Test
     public void testSetStatus() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
 
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
@@ -40,7 +38,7 @@ public class BattleshipApplicationTests {
 
     @Test
     public void testSetLockAroundPlaceOneShip() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -71,7 +69,7 @@ public class BattleshipApplicationTests {
 
     @Test
     public void testSetLockAroundPlaceTwoShip() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -95,7 +93,7 @@ public class BattleshipApplicationTests {
 
     @Test
     public void testSetLockAroundPlaceThreeShip() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -120,7 +118,7 @@ public class BattleshipApplicationTests {
 
     @Test
     public void testSetUnlockAroundFirstPlace() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -144,7 +142,7 @@ public class BattleshipApplicationTests {
 
     @Test
     public void testSetUnlockAroundFirstPlaceBorder() {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] emptyArray = new String[5][5];
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -169,7 +167,7 @@ public class BattleshipApplicationTests {
     @Test
     public void testHorizontally()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -188,7 +186,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test1SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -220,7 +218,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test2SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -252,7 +250,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test3SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.PLACE, VariableContainer.PLACE, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -284,7 +282,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test4SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -316,7 +314,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test5SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
                 {VariableContainer.UNLOCK, VariableContainer.PLACE, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
@@ -348,7 +346,7 @@ public class BattleshipApplicationTests {
     @Test
     public void test6SetUnlockPlace()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         String[][] startArray = new String[][]{
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.PLACE, VariableContainer.UNLOCK},
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.UNLOCK, VariableContainer.PLACE, VariableContainer.UNLOCK},
@@ -376,7 +374,4 @@ public class BattleshipApplicationTests {
 
         Assert.assertEquals(exceptedArray, startArray);
     }
-
-
-
 }

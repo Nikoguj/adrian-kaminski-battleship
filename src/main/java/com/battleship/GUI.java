@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class GUI {
     public void SetBackgroundOnGrid(GridPane gridPane) {
         Image backgroundImage = new Image("background.jpg");
-        BackgroundSize backgroundSize = new BackgroundSize(960, 540, false, false, false, true);
+        BackgroundSize backgroundSize = new BackgroundSize(960, 560, false, false, false, true);
         BackgroundImage myBI = new BackgroundImage(backgroundImage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, backgroundSize);
         gridPane.setBackground(new Background(myBI));
     }
@@ -24,15 +24,41 @@ public class GUI {
         RowConstraints row2 = new RowConstraints();
         row2.setPrefHeight(80);
         RowConstraints row3 = new RowConstraints();
-        row3.setPrefHeight(421);
+        row3.setPrefHeight(420);
         ColumnConstraints column1 = new ColumnConstraints();
         column1.setPrefWidth(480);
         ColumnConstraints column2 = new ColumnConstraints();
         column2.setPrefWidth(480);
 
-
         gridPane.getRowConstraints().addAll(row1, row2, row3);
         gridPane.getColumnConstraints().addAll(column1, column2);
+    }
+
+    public static Label label = new Label();
+
+    public void SpawnLabelHowManyLeftToPlace(GridPane gridPane) {
+        try {
+            label.setText("How many boxes left to place = " + VariableContainer.HOW_MANY_LEFT_TO_PLACE);
+            label.setPrefHeight(50);
+            label.setMaxWidth(Double.MAX_VALUE);
+            label.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, 3);
+            gridPane.getChildren().addAll(label);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void SpawnLabelWithName(GridPane gridPane, Player player1, Player player2) {
+        Label label = new Label(VariableContainer.PAYER_NAME);
+        label.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        label.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(label, 0, 0);
+        Label label2 = new Label(player2.getName());
+        label2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+        label2.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(label2, 1, 0);
+        gridPane.getChildren().addAll(label, label2);
     }
 
     public void MakeGridPaneForShipsChoose(GridPane gridPane, GridPane playerShips, int whichColumn) {
@@ -53,7 +79,7 @@ public class GUI {
         playerShips.getRowConstraints().addAll(shipRow1, shipRow2);
 
         playerShips.setAlignment(Pos.CENTER);
-        playerShips.setGridLinesVisible(true);
+        //playerShips.setGridLinesVisible(true);
         GridPane.setConstraints(playerShips, whichColumn, 1);
 
         gridPane.getChildren().addAll(playerShips);
@@ -181,7 +207,7 @@ public class GUI {
 
     Array array1 = new Array();
 
-    public void SpawnButtonInChoosePlayer(Ship ship, String[][] array, Bridge bridge) {
+    public void SpawnButtonInChoosePlayer(Logic logic, String[][] array, Bridge bridge, GridPane gridPane) {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4 - i; j++) {
                 Button button = new Button();
@@ -191,10 +217,11 @@ public class GUI {
                         @Override
                         public void handle(ActionEvent event) {
                             if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0 && VariableContainer.PLAYER1_FOUR_MASTED_SHIP > 0) {
-                                bridge.PlayerChooseShip(4, ship, array);
+                                bridge.PlayerChooseShip(4, logic, array);
                                 SetColourButtonInPlayerBoard();
                                 VariableContainer.PLAYER1_FOUR_MASTED_SHIP = VariableContainer.PLAYER1_FOUR_MASTED_SHIP - 1;
                                 VariableContainer.PLAYER1_FOUR_MASTED_SHIP_LABEL.setText(String.valueOf(VariableContainer.PLAYER1_FOUR_MASTED_SHIP));
+                                SpawnLabelHowManyLeftToPlace(gridPane);
                             }
                         }
                     });
@@ -203,11 +230,12 @@ public class GUI {
                         @Override
                         public void handle(ActionEvent event) {
                             if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0 && VariableContainer.PLAYER1_THREE_MASTED_SHIP > 0) {
-                                bridge.PlayerChooseShip(3, ship, array);
+                                bridge.PlayerChooseShip(3, logic, array);
                                 SetColourButtonInPlayerBoard();
 
                                 VariableContainer.PLAYER1_THREE_MASTED_SHIP = VariableContainer.PLAYER1_THREE_MASTED_SHIP - 1;
                                 VariableContainer.PLAYER1_THREE_MASTED_SHIP_LABEL.setText(String.valueOf(VariableContainer.PLAYER1_THREE_MASTED_SHIP));
+                                SpawnLabelHowManyLeftToPlace(gridPane);
                             }
                         }
                     });
@@ -216,10 +244,11 @@ public class GUI {
                         @Override
                         public void handle(ActionEvent event) {
                             if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0 && VariableContainer.PLAYER1_TWO_MASTED_SHIP > 0) {
-                                bridge.PlayerChooseShip(2, ship, array);
+                                bridge.PlayerChooseShip(2, logic, array);
                                 SetColourButtonInPlayerBoard();
                                 VariableContainer.PLAYER1_TWO_MASTED_SHIP = VariableContainer.PLAYER1_TWO_MASTED_SHIP - 1;
                                 VariableContainer.PLAYER1_TWO_MASTED_SHIP_LABEL.setText(String.valueOf(VariableContainer.PLAYER1_TWO_MASTED_SHIP));
+                                SpawnLabelHowManyLeftToPlace(gridPane);
                             }
                         }
                     });
@@ -228,10 +257,11 @@ public class GUI {
                         @Override
                         public void handle(ActionEvent event) {
                             if (VariableContainer.HOW_MANY_LEFT_TO_PLACE == 0 && VariableContainer.PLAYER1_ONE_MASTED_SHIP > 0) {
-                                bridge.PlayerChooseShip(1, ship, array);
+                                bridge.PlayerChooseShip(1, logic, array);
                                 SetColourButtonInPlayerBoard();
                                 VariableContainer.PLAYER1_ONE_MASTED_SHIP = VariableContainer.PLAYER1_ONE_MASTED_SHIP - 1;
                                 VariableContainer.PLAYER1_ONE_MASTED_SHIP_LABEL.setText(String.valueOf(VariableContainer.PLAYER1_ONE_MASTED_SHIP));
+                                SpawnLabelHowManyLeftToPlace(gridPane);
                             }
                         }
                     });
@@ -245,23 +275,23 @@ public class GUI {
         }
     }
 
-    public void SpawnButtonInPayerBoard(int player, Ship ship, String[][] array, Bridge bridge, GridPane boardGrid) {
+    public void SpawnButtonInPayerBoard(Logic logic, String[][] array, Bridge bridge, GridPane boardGrid, Player player, GridPane gridPane) {
         for (int i = 0; i < VariableContainer.array.length; i++) {
             for (int j = 0; j < VariableContainer.array.length; j++) {
                 Button button = new Button();
                 button.setStyle(VariableContainer.EMPTYCOLOUR);
                 VariableContainer.arrayButton[i][j] = button;
-                if (player == 1) {
-                    int finalJ = j;
-                    int finalI = i;
-                    button.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override
-                        public void handle(ActionEvent event) {
-                            bridge.PlayerClickButtonInBoard(ship, array, finalJ, finalI);
-                            SetColourButtonInPlayerBoard();
-                        }
-                    });
-                }
+                int finalJ = j;
+                int finalI = i;
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        bridge.PlayerClickButtonInBoard(logic, array, finalJ, finalI, player);
+                        SetColourButtonInPlayerBoard();
+                        SpawnLabelHowManyLeftToPlace(gridPane);
+                    }
+                });
+
                 button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
                 GridPane.setConstraints(button, j + 1, i + 1);
                 boardGrid.getChildren().addAll(button);
@@ -300,17 +330,33 @@ public class GUI {
                     VariableContainer.arrayButtonPC[i][j].setStyle(VariableContainer.HITCOLOUR);
                 } else if (VariableContainer.arrayPC[i][j].equals(VariableContainer.HITSINK)) {
                     VariableContainer.arrayButtonPC[i][j].setStyle(VariableContainer.HITSINKCOLOUR);
-                }else if (VariableContainer.arrayPC[i][j].equals(VariableContainer.MISS)) {
+                } else if (VariableContainer.arrayPC[i][j].equals(VariableContainer.MISS)) {
                     VariableContainer.arrayButtonPC[i][j].setStyle(VariableContainer.MISSCOLOUR);
                 }
             }
         }
     }
 
-    public void SpawnButtonInComputerBoard(GridPane player2Board) {
+    public void SpawnButtonInComputerBoard(GridPane player2Board, Bridge bridge, Logic logic, Player player, Computer computer) {
         for (int i = 0; i < VariableContainer.arrayPC.length; i++) {
             for (int j = VariableContainer.arrayPC.length - 1; j >= 0; j--) {
                 Button button = new Button();
+                int finalJ = j;
+                int finalI = i;
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        boolean clicked = false;
+                        if (player.getNumberBoxesLeft() == 0) {
+                            bridge.PlayerShotInBoard(logic, VariableContainer.arrayPC, finalJ, finalI);
+                            computer.RandomShot(logic, VariableContainer.array);
+                            logic.HitSink(VariableContainer.array);
+                            button.setDisable(true);
+                            SetColourButtonInComputerBoard();
+                            SetColourButtonInPlayerBoard();
+                        }
+                    }
+                });
                 button.setStyle(VariableContainer.EMPTYCOLOUR);
                 VariableContainer.arrayButtonPC[i][j] = button;
                 button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -319,5 +365,6 @@ public class GUI {
             }
         }
     }
+
 
 }

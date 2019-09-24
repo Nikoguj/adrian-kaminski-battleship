@@ -7,7 +7,7 @@ public class BridgeTest {
     @Test
     public void testPlayerChooseShip()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -26,7 +26,7 @@ public class BridgeTest {
     @Test
     public void testPlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -45,8 +45,10 @@ public class BridgeTest {
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
         };
 
+        Player player = new Player("Player", false);
+
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
-        bridge.PlayerClickButtonInBoard(ship, array, 1,2);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -54,7 +56,7 @@ public class BridgeTest {
     @Test
     public void test2PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -73,9 +75,11 @@ public class BridgeTest {
                 {VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
         };
 
+        Player player = new Player("Player", false);
+
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
-        bridge.PlayerClickButtonInBoard(ship, array, 1,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 2, 2);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 2, 2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -83,7 +87,7 @@ public class BridgeTest {
     @Test
     public void test3PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -102,10 +106,13 @@ public class BridgeTest {
                 {VariableContainer.EMPTY, VariableContainer.PLACE, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
         };
 
+
+        Player player = new Player("Player", false);
+
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
-        bridge.PlayerClickButtonInBoard(ship, array, 1,4);
-        bridge.PlayerClickButtonInBoard(ship, array, 1, 3);
-        bridge.PlayerClickButtonInBoard(ship, array, 1, 2);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,4, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 1, 3, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 1, 2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -113,7 +120,7 @@ public class BridgeTest {
     @Test
     public void test4PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -132,10 +139,12 @@ public class BridgeTest {
                 {VariableContainer.PLACE, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY, VariableContainer.EMPTY},
         };
 
+        Player player = new Player("Player", false);
+
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
-        bridge.PlayerClickButtonInBoard(ship, array, 0,4);
-        bridge.PlayerClickButtonInBoard(ship, array, 0, 3);
-        bridge.PlayerClickButtonInBoard(ship, array, 0, 2);
+        bridge.PlayerClickButtonInBoard(ship, array, 0,4, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 0, 3, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 0, 2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -143,7 +152,7 @@ public class BridgeTest {
     @Test
     public void test5PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -162,9 +171,12 @@ public class BridgeTest {
                 {VariableContainer.PLACE, VariableContainer.PLACE, VariableContainer.UNLOCK, VariableContainer.EMPTY, VariableContainer.EMPTY},
         };
 
+
+        Player player = new Player("Player", false);
+
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
-        bridge.PlayerClickButtonInBoard(ship, array, 0,4);
-        bridge.PlayerClickButtonInBoard(ship, array, 1, 4);
+        bridge.PlayerClickButtonInBoard(ship, array, 0,4, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 1, 4, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -172,7 +184,7 @@ public class BridgeTest {
     @Test
     public void test6PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -192,11 +204,12 @@ public class BridgeTest {
         };
 
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
+        Player player = new Player("Player", false);
 
-        bridge.PlayerClickButtonInBoard(ship, array, 1,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 2,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 3,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 4,2);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 2,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 3,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -204,7 +217,7 @@ public class BridgeTest {
     @Test
     public void test7PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -224,10 +237,11 @@ public class BridgeTest {
         };
 
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
+        Player player = new Player("Player", false);
 
-        bridge.PlayerClickButtonInBoard(ship, array, 1,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 2,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 3,2);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 2,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 3,2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -235,7 +249,7 @@ public class BridgeTest {
     @Test
     public void test8PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -255,10 +269,11 @@ public class BridgeTest {
         };
 
         bridge.PlayerChooseShip(VariableContainer.FOUR_MASTED, ship, array);
+        Player player = new Player("Player", false);
 
-        bridge.PlayerClickButtonInBoard(ship, array, 4,4);
-        bridge.PlayerClickButtonInBoard(ship, array, 4,3);
-        bridge.PlayerClickButtonInBoard(ship, array, 4,2);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,4, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,3, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,2, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
@@ -266,7 +281,7 @@ public class BridgeTest {
     @Test
     public void test9PlayerClickButtonInBoard()
     {
-        Ship ship = new Ship();
+        Logic ship = new Logic();
         Bridge bridge = new Bridge();
 
         String[][] array = new String[][]{
@@ -286,11 +301,12 @@ public class BridgeTest {
         };
 
         bridge.PlayerChooseShip(VariableContainer.TWO_MASTED, ship, array);
+        Player player = new Player("Player", false);
 
-        bridge.PlayerClickButtonInBoard(ship, array, 4,4);
-        bridge.PlayerClickButtonInBoard(ship, array, 4,3);
-        bridge.PlayerClickButtonInBoard(ship, array, 4,2);
-        bridge.PlayerClickButtonInBoard(ship, array, 1,3);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,4, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,3, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 4,2, player);
+        bridge.PlayerClickButtonInBoard(ship, array, 1,3, player);
 
         Assert.assertEquals(exceptedArray, array);
     }
