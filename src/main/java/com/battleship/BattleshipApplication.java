@@ -62,6 +62,7 @@ public class BattleshipApplication extends Application {
         gui.SpawnButtonInPayerBoard(logic, VariableContainer.array, bridge, player1Board, player1, gridPane);
         gui.SpawnButtonInComputerBoard(player2Board, bridge, logic, player1, computer);
 
+        primaryStage.setTitle("Battleship");
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setGridLinesVisible(true);
         gridPane.getChildren().addAll();

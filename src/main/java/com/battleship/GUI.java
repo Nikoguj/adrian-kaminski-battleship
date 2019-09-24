@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class GUI {
@@ -347,14 +348,13 @@ public class GUI {
                     @Override
                     public void handle(ActionEvent event) {
                         boolean clicked = false;
-                        if (player.getNumberBoxesLeft() == 0) {
-                            bridge.PlayerShotInBoard(logic, VariableContainer.arrayPC, finalJ, finalI);
-                            computer.RandomShot(logic, VariableContainer.array);
-                            logic.HitSink(VariableContainer.array);
-                            button.setDisable(true);
-                            SetColourButtonInComputerBoard();
-                            SetColourButtonInPlayerBoard();
-                        }
+                            if (player.getNumberBoxesLeft() == 0 && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.HIT) && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.MISS)) {
+                                bridge.PlayerShotInBoard(logic, VariableContainer.arrayPC, finalJ, finalI);
+                                computer.RandomShot(logic, VariableContainer.array);
+                                logic.HitSink(VariableContainer.array);
+                                SetColourButtonInComputerBoard();
+                                SetColourButtonInPlayerBoard();
+                            }
                     }
                 });
                 button.setStyle(VariableContainer.EMPTYCOLOUR);

@@ -31,7 +31,7 @@ public class Computer {
         VariableContainer.arrayPC[9][7] = VariableContainer.PLACE;
     }
 
-    public void RandomShot(Logic ship, String[][] array) {
+    public void RandomShot(Logic logic, String[][] array) {
         Random random = new Random();
         int row = random.nextInt(array.length);
         int column = random.nextInt(array.length);
@@ -41,9 +41,9 @@ public class Computer {
             column = random.nextInt(array.length);
         }
         if (array[row][column].equals(VariableContainer.PLACE)) {
-            ship.SetStatus(array, VariableContainer.HIT, column, row);
+            logic.SetStatus(array, VariableContainer.HIT, column, row);
         }else{
-            ship.SetStatus(array, VariableContainer.MISS, column, row);
+            logic.SetStatus(array, VariableContainer.MISS, column, row);
         }
     }
 }

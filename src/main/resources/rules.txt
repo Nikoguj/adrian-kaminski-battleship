@@ -1,0 +1,6 @@
+1. At the beginning, choose the size of your ship and place it on the board. Ships can be set vertically or horizontally but they can't overlap and come into contact with the edges or corners of the other ones.
+2. The game starts when you place all of your ships.
+3. Your aim is to hit  (guess the place of) computer's ships.
+4. The shots are cast alternately (unless you hit, then you keep going untill you miss)
+If you guess the position of the whole ship, it's sink.
+5. The winner is the one who first sinks all of the oponent's ships.

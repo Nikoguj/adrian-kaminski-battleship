@@ -1,7 +1,6 @@
 package com.battleship;
 
 import com.sun.javafx.geom.Vec2d;
-import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
 
 public class Logic {
 
@@ -294,6 +293,6 @@ public class Logic {
         } else {
             return false;
         }
-
     }
+
 }

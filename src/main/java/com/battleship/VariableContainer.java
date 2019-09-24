@@ -19,7 +19,7 @@ public class VariableContainer {
     public static String HITSINKCOLOUR = "-fx-background-color: #000000";
     public static String UNLOCKCOLOUR = "-fx-background-color: #8cff00";
     public static String LOCKCOLOUR = "-fx-background-color: #828282";
-    public static String MISSCOLOUR = "-fx-background-color: #ffdd00";
+    public static String MISSCOLOUR = "-fx-background-color: #f2f7bc";
 
     public static Vec2d LASTPLACE = new Vec2d(5, 5);
 
