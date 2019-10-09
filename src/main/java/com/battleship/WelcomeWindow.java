@@ -56,7 +56,6 @@ public class WelcomeWindow {
         rulesLabel.setFont(Font.font("", 16));
         rulesLabel.setWrapText(true);
         rulesLabel.setTextAlignment(TextAlignment.JUSTIFY);
-        //rulesLabel.setTextAlignment(TextAlignment.CENTER);
 
 
         RowConstraints row1 = new RowConstraints();

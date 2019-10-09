@@ -16,19 +16,8 @@ public class BattleshipApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         GridPane gridPane = new GridPane();
-
-        GUI gui = new GUI();
-
-        gui.SetBackgroundOnGrid(gridPane);
-        gui.SetRowColumnHeightWeight(gridPane);
-
         GridPane player1ShipsChoose = new GridPane();
         GridPane player2ShipsChoose = new GridPane();
-        gui.MakeGridPaneForShipsChoose(gridPane, player1ShipsChoose, 0);
-        gui.MakeGridPaneForShipsChoose(gridPane, player2ShipsChoose, 1);
-
-        gui.MakeGridShipChoose(player1ShipsChoose);
-        gui.MakeGridShipChoose(player2ShipsChoose);
 
         Array array = new Array();
         array.SetArrayEmpty(VariableContainer.array);
@@ -37,30 +26,15 @@ public class BattleshipApplication extends Application {
         Bridge bridge = new Bridge();
         Computer computer = new Computer();
 
-        gui.SpawnButtonInChoosePlayer(logic, VariableContainer.array, bridge, gridPane);
-        gui.SpawnButtonInChooseComputer();
-
-        gui.FillLabelOnStart(player1ShipsChoose, true);
-        gui.FillLabelOnStart(player2ShipsChoose, false);
-
         GridPane player1Board = new GridPane();
         GridPane player2Board = new GridPane();
-
-        gui.MakeGridBoard(gridPane, player1Board, 0);
-        gui.MakeGridBoard(gridPane, player2Board, 1);
-
-        gui.SpawnIndexInGrid(player1Board);
-        gui.SpawnIndexInGrid(player2Board);
-
-        gui.SpawnLabelHowManyLeftToPlace(gridPane);
 
         Player player1 = new Player(VariableContainer.PAYER_NAME, false);
         Player player2 = new Player("Computer", false);
 
-
         computer.FillComputerArray();
-        gui.SpawnButtonInPayerBoard(logic, VariableContainer.array, bridge, player1Board, player1, gridPane);
-        gui.SpawnButtonInComputerBoard(player2Board, bridge, logic, player1, computer);
+
+        GUI gui = new GUI(gridPane, player1ShipsChoose, player2ShipsChoose, logic, bridge, player1Board, player2Board, player1, player2, computer);
 
         primaryStage.setTitle("Battleship");
         gridPane.setAlignment(Pos.CENTER);

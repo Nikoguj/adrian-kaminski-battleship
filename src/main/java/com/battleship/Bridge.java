@@ -45,11 +45,12 @@ public class Bridge {
         return false;
     }
 
-    public void PlayerShotInBoard(Logic logic, String[][] array, int column, int row)
+    public void PlayerShotInBoard(Logic logic, String[][] array, int column, int row, Player player1)
     {
         if (array[row][column].equals(VariableContainer.PLACE)) {
             logic.SetStatus(array, VariableContainer.HIT, column, row);
             logic.HitSink(array);
+            player1.setNumberBoxesHitLeft(player1.getNumberBoxesHitLeft()-1);
         }else{
             logic.SetStatus(array, VariableContainer.MISS, column, row);
         }

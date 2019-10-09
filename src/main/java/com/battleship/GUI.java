@@ -12,6 +12,27 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class GUI {
+
+    public GUI(GridPane gridPane, GridPane player1ShipsChoose, GridPane player2ShipsChoose, Logic logic, Bridge bridge, GridPane player1Board,  GridPane player2Board, Player player1, Player player2, Computer computer) {
+        SetBackgroundOnGrid(gridPane);
+        SetRowColumnHeightWeight(gridPane);
+        MakeGridPaneForShipsChoose(gridPane, player1ShipsChoose, 0);
+        MakeGridPaneForShipsChoose(gridPane, player2ShipsChoose, 1);
+        MakeGridShipChoose(player1ShipsChoose);
+        MakeGridShipChoose(player2ShipsChoose);
+        SpawnButtonInChoosePlayer(logic, VariableContainer.array, bridge, gridPane);
+        SpawnButtonInChooseComputer();
+        FillLabelOnStart(player1ShipsChoose, true);
+        FillLabelOnStart(player2ShipsChoose, false);
+        MakeGridBoard(gridPane, player1Board, 0);
+        MakeGridBoard(gridPane, player2Board, 1);
+        SpawnIndexInGrid(player1Board);
+        SpawnIndexInGrid(player2Board);
+        SpawnLabelHowManyLeftToPlace(gridPane);
+        SpawnButtonInPayerBoard(logic, VariableContainer.array, bridge, player1Board, player1, gridPane);
+        SpawnButtonInComputerBoard(player2Board, bridge, logic, player1, computer, player2);
+    }
+
     public void SetBackgroundOnGrid(GridPane gridPane) {
         Image backgroundImage = new Image("background.jpg");
         BackgroundSize backgroundSize = new BackgroundSize(960, 560, false, false, false, true);
@@ -338,7 +359,7 @@ public class GUI {
         }
     }
 
-    public void SpawnButtonInComputerBoard(GridPane player2Board, Bridge bridge, Logic logic, Player player, Computer computer) {
+    public void SpawnButtonInComputerBoard(GridPane player2Board, Bridge bridge, Logic logic, Player player1, Computer computer, Player player2) {
         for (int i = 0; i < VariableContainer.arrayPC.length; i++) {
             for (int j = VariableContainer.arrayPC.length - 1; j >= 0; j--) {
                 Button button = new Button();
@@ -347,14 +368,22 @@ public class GUI {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        boolean clicked = false;
-                            if (player.getNumberBoxesLeft() == 0 && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.HIT) && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.MISS)) {
-                                bridge.PlayerShotInBoard(logic, VariableContainer.arrayPC, finalJ, finalI);
-                                computer.RandomShot(logic, VariableContainer.array);
-                                logic.HitSink(VariableContainer.array);
-                                SetColourButtonInComputerBoard();
-                                SetColourButtonInPlayerBoard();
+                        if (player1.getNumberBoxesLeft() == 0 && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.HIT) && !VariableContainer.arrayPC[finalI][finalJ].equals(VariableContainer.MISS)) {
+                            bridge.PlayerShotInBoard(logic, VariableContainer.arrayPC, finalJ, finalI, player1);
+                            computer.RandomShot(logic, VariableContainer.array, player2);
+                            logic.HitSink(VariableContainer.array);
+                            SetColourButtonInComputerBoard();
+                            SetColourButtonInPlayerBoard();
+                            SetColourButtonInComputerBoard();
+                            player1.setName(VariableContainer.PAYER_NAME);
+                            if(player1.getNumberBoxesHitLeft() == 0)
+                            {
+                                EndWindow endWindow = new EndWindow(player1);
+                            } else if (player2.getNumberBoxesHitLeft() == 0)
+                            {
+                                EndWindow endWindow = new EndWindow(player2);
                             }
+                        }
                     }
                 });
                 button.setStyle(VariableContainer.EMPTYCOLOUR);
